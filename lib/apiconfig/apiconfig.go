@@ -16,6 +16,7 @@ package apiconfig
 
 import (
 	"strings"
+	"time"
 
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
@@ -82,6 +83,16 @@ type KubeConfig struct {
 	KubeconfigInline string `json:"kubeconfigInline" ignored:"true"`
 	// K8sClientQPS overrides the QPS for the Kube client.
 	K8sClientQPS float32 `json:"k8sClientQPS"`
+	// K8sClientBurst overrides the burst for the Kube client.
+	K8sClientBurst int `json:"k8sClientBurst"`
+	// K8sClientTimeout overrides the timeout for the Kube client
+	K8sClientTimeout time.Duration `json:"k8sClientTimeout"`
+	// K8sClientAcceptContentTypes overrides the response accept content-type for the Kube client
+	K8sClientAcceptContentTypes string `json:"k8sClientAcceptContentTypes"`
+	// K8sClientContentType overrides the request content-type for the Kube client
+	K8sClientContentType string `json:"k8sClientContentTypes"`
+	// K8sClientUserAgent overrides the user-agent for the Kube client
+	K8sClientUserAgent string `json:"k8sClientUserAgent"`
 	// K8sCurrentContext provides a context override for kubeconfig.
 	K8sCurrentContext string `json:"k8sCurrentContext" envconfig:"K8S_CURRENT_CONTEXT" default:""`
 }
